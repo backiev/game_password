@@ -1,0 +1,15 @@
+@import "reset";
+@import 'variables';
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('@/fonts/JetBrainsMono-Regular.ttf');
+}
+
+.display-none {
+    display: none;
+}
+
+* {
+    font-family: 'JetBrains Mono', sans-serif;
+}

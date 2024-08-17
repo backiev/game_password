@@ -4,7 +4,12 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
-
+    "paths": {
+      // "@components": ["src/components"],
+      // "@scss": ["src/styles/scss"],
+      // "@img": ["src/assests/images"],
+      "@": ["./src"],
+    },
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
