@@ -10,7 +10,12 @@ const tasks = store.tasks;
 
 <template>
     <div class="game-tasks__wrapper">
-        <div class="game-title" v-if="tasks.length >= 2">Выполнено заданий: 1 (из {{ tasks_array.length }})</div>
+        <div 
+            class="game-title" 
+            v-if="tasks.length >= 2"
+        >
+            Выполнено заданий: {{ tasks.length }} (из {{ tasks_array.length }})
+        </div>
         <div class="game-tasks">
             <task 
                 v-for="task in tasks"

@@ -1,12 +1,8 @@
 import { defineStore } from 'pinia';
 import { tasks } from '@/data/tasks/tasks';
+import { ITask } from '@/types/tasks';
 
-interface ITask {
-    id: number
-    text: string
-    status: string | null
-    checkSuccess: (value: string) => string
-} 
+
 interface PasswordState {
     password: string
     tasks: ITask[]
@@ -15,8 +11,8 @@ interface PasswordState {
 export const usePasswordStore = defineStore({
     id: 'password',
     state: (): PasswordState => ({
-        password: '',
-        tasks: [tasks[0]]
+        password: JSON.parse(localStorage.getItem('password') as string),
+        tasks: JSON.parse(localStorage.getItem('tasks') as string) ? JSON.parse(localStorage.getItem('tasks') as string) : [tasks[0]]
     }),
     actions: {
         // Проверяем, добавлять нам новую таску или нет
@@ -26,7 +22,9 @@ export const usePasswordStore = defineStore({
             if (activeTasks.length === 0 && failTasks.length === 0) {
                 const nullTasks = tasks.filter((task) => task.status === null);
                 const newTask = {id: nullTasks[0].id, text: nullTasks[0].text, status: 'active', checkSuccess: nullTasks[0].checkSuccess};
+                
                 this.tasks.unshift(newTask);
+                nullTasks[0].status = 'active';
             }
         },
         // Проверяем статусы у активных тасков
@@ -34,11 +32,15 @@ export const usePasswordStore = defineStore({
             this.tasks.map(task => {
                 task.status = task.checkSuccess(this.password);
             })
-            this.checkNewTask();
+            // проверка на выполненные задания
+            if (this.tasks.length !== tasks.length) this.checkNewTask();
+
+            localStorage.setItem('tasks', JSON.stringify(this.tasks))
         },
         // Обновляем текстовое поле пароля
         updatePassword(value: string) {
             this.password = value;
+            localStorage.setItem('password', JSON.stringify(this.password))
         },
     },
 });
