@@ -16,5 +16,14 @@ export const tasks = [
             // if (value.length >= 6) return 'done'
             return 'fail'
         }
+    },
+    {
+        id: 2,
+        text: 'Пароль должен содержать цифры',
+        status: null,
+        checkSuccess(value: string) {
+            // if (value.length >= 6) return 'done'
+            return 'fail'
+        }
     }
 ]
