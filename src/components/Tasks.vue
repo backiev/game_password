@@ -1,11 +1,21 @@
 <script setup lang="ts">
+import task from '@/ui/task.vue';
+import { usePasswordStore } from '@/store/password.store';
+
+const store = usePasswordStore();
+const tasks = store.tasks;
+
 </script>
 
 <template>
     <div class="game-tasks">
-        <div class="task fail">Задание: В пароле не должно быть пробелов</div>
-        <div class="task done">Задание: В пароле не должно быть пробелов</div>
-        <div class="task">Задание: В пароле не должно быть пробелов</div>
+        <task 
+            v-for="task in tasks"
+            :key="task.id"
+            :text="task.text" 
+            :status="task.status"
+        >
+        </task>
     </div>
 </template>
 

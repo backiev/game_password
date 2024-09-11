@@ -3,9 +3,12 @@
   import Tasks from '../components/Tasks.vue';
   import { usePasswordStore } from '@/store/password.store'
   
-  const password = usePasswordStore();
+  const store = usePasswordStore();
   const updateHandle = (value: string) => {
-    password.updatePassword(value);
+    store.updatePassword(value);
+  }
+  const checkPasswordHandle = () => {
+    store.checkTasks();
   }
 </script>
 
@@ -16,10 +19,10 @@
         <div class="game-input">
           <div class="block">
             <base-textarea
-              v-model="password.password"
+              v-model="store.password"
               @update="updateHandle"  
             ></base-textarea>
-            <button class="button">Проверить</button>
+            <button class="button" @click="checkPasswordHandle">Проверить</button>
           </div>
         </div>
         <tasks></tasks>
