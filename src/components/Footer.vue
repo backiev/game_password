@@ -3,11 +3,13 @@
 </script>
 
 <template>
-  <div class="footer">Footer</div>
+  <div class="footer">created by backiev</div>
 </template>
 
 <style scoped lang="scss">
   .footer {
-    // margin-top: auto;
+    text-align: center;
+    background-color: $color-blue-light;
+    padding: 30px 0;
   }
 </style>

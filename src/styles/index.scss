@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('@/fonts/JetBrainsMono-Regular.ttf');
+}
+
+.display-none {
+    display: none;
+}
+
+* {
+    font-family: 'JetBrains Mono', sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #333;
+    // padding: 0 20px;
+    color: white;
+}

@@ -8,18 +8,20 @@ import Game from './components/Game.vue';
 <template>
   <div class="wrapper">
     <Header />
-    <Game />
+    <main class="main">
+      <Game />
+    </main>
     <Footer />
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .wrapper {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    background-color: #333;
-    // padding: 0 20px;
-    color: white;
+    display: flex;
+    flex-direction: column;
   }
+  .main {
+    flex-grow: 1;
+  }
+
 </style>
