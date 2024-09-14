@@ -48,5 +48,15 @@ export const tasks: ITask[] = [
             return 'fail'
         }
     },
+    {
+        id: 5,
+        text: 'Пароль НЕ должен содержать пробелы',
+        status: null,
+        checkSuccess(value: string) {
+            const valueGood = value.replace(/\s/g, '');
+            if (value === valueGood) return 'done'
+            return 'fail'
+        }
+    },
     
 ]

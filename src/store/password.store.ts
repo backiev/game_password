@@ -30,12 +30,28 @@ export const usePasswordStore = defineStore({
         // Проверяем статусы у активных тасков
         checkTasks() {
             this.tasks.map(task => {
-                task.status = task.checkSuccess(this.password);
+                tasks.map(item => {
+                    if (task.id === item.id) {
+                        task.status = item.checkSuccess(this.password);
+                    }
+                })
             })
-            // проверка на выполненные задания
-            if (this.tasks.length !== tasks.length) this.checkNewTask();
+            if (this.tasks.length > 1) {
+                this.sortTasks();
+            }
+            // проверка на все добавленные задания
+            if (this.tasks.length !== tasks.length) {
+                this.checkNewTask();
+            } else {
+                console.log('all succedd');
+            }
 
             localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        },
+        sortTasks() {
+            this.tasks.sort((a, b) => {
+                return a.status === 'fail' ? -1 : 1;
+            });
         },
         // Обновляем текстовое поле пароля
         updatePassword(value: string) {
