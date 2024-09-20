@@ -32,8 +32,8 @@ const handleUpdate = (event: Event) => {
 <style lang="scss" scoped>
     
     .textarea {
-        background-color: white;
-        color: black;
+        background-color: $color-white;
+        color: $color-black;
         border-radius: 4px;
         resize: none;
         outline: none;

@@ -1,4 +1,9 @@
 import { ITask } from '@/types/tasks';
+// контекстно.рф/?id=66edf5adcc172f07738e3f36
+// https://tinyurl.com/3uyhu7ks
+// перфоратор
+const wordContext = 'перфоратор';
+const linkContext = 'https://tinyurl.com/3uyhu7ks';
 
 export const tasks: ITask[] = [
     {
@@ -40,23 +45,22 @@ export const tasks: ITask[] = [
     },
     {
         id: 4,
-        text: 'Пароль НЕ должен содержать пробелы',
+        text: `Пароль должен содержать загаданное слово в <a class="link" target="_blank" href=${linkContext}>контекстно</a> (Если вы стример, просьба <span class="color-warning">не показывать ссылку</span>)`,
         status: null,
         checkSuccess(value: string) {
-            const valueGood = value.replace(/\s/g, '');
-            if (value === valueGood) return 'done'
+            if (value.includes(wordContext)) return 'done'
             return 'fail'
         }
     },
-    {
-        id: 5,
-        text: 'Пароль НЕ должен содержать пробелы',
-        status: null,
-        checkSuccess(value: string) {
-            const valueGood = value.replace(/\s/g, '');
-            if (value === valueGood) return 'done'
-            return 'fail'
-        }
-    },
+    // {
+    //     id: 5,
+    //     text: 'Пароль НЕ должен содержать пробелы',
+    //     status: null,
+    //     checkSuccess(value: string) {
+    //         const valueGood = value.replace(/\s/g, '');
+    //         if (value === valueGood) return 'done'
+    //         return 'fail'
+    //     }
+    // },
     
 ]

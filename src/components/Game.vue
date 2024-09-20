@@ -38,8 +38,8 @@
         gap: 10px;
     }
     .button {
-        background-color: white;
-        color: black;
+        background-color: $color-white;
+        color: $color-black;
         border-radius: 4px;
         padding: 5px 10px;
         outline: none;

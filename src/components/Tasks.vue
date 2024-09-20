@@ -40,15 +40,4 @@ const tasks = store.tasks;
         flex-direction: column;
         gap: 10px;
     }
-    .task {
-        padding: 8px;
-        min-height: 40px;
-        background-color: #BCBCBC;
-        &.fail {
-            background-color: #CD5C5C;
-        }
-        &.done {
-            background-color: #71BE1E;
-        }
-    }
 </style>

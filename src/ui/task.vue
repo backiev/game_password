@@ -12,17 +12,16 @@ const props = defineProps({
     <div 
         class="task" 
         v-if="status !== null"
+        v-html="props.text"
         :class="{fail: props.status === 'fail', done: props.status === 'done'}"
-    >
-        Задание: {{props.text}}
-    </div>
+    ></div>
 </template>
 
 <style lang='scss' scoped>
     .task {
         padding: 8px;
         min-height: 40px;
-        background-color: $color-dark-grey;
+        background-color: $color-brown-light;
         &.fail {
             background-color: $color-fail;
         }

@@ -3,4 +3,4 @@ export interface ITask {
     text: string
     status: string | null
     checkSuccess: (value: string) => string
-} 
+}

@@ -49,7 +49,7 @@ export const usePasswordStore = defineStore({
             localStorage.setItem('tasks', JSON.stringify(this.tasks))
         },
         sortTasks() {
-            this.tasks.sort((a, b) => {
+            this.tasks.sort((a) => {
                 return a.status === 'fail' ? -1 : 1;
             });
         },
