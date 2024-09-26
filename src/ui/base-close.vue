@@ -16,13 +16,14 @@
         position: relative;
         .close-line {
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 0;
             right: 0;
             bottom: 0;
             width: 100%;
-            height: 4px;
-            background-color: $color-black;
+            height: 5px;
+            background-color: $color-white;
+            border: 2px solid $color-blue-light;
             transition: background-color .2s ease-in-out;
             border-radius: 50px;
             &.first {
@@ -33,10 +34,10 @@
             }
         }
         &:hover {
+            cursor: pointer;
             .close-line {
                 background-color: $color-blue-light;
             }
-            cursor: pointer;
         }
     }
 </style>

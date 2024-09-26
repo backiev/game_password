@@ -21,12 +21,11 @@
     //     }
     // })
     const emit = defineEmits<{
-    (e: 'confirm'): void
-  }>()
+        (e: 'confirm'): void
+    }>()
 </script>
 
 <template>
-    <!-- <div class="modal"> -->
         <VueFinalModal
             class="confirm-modal"
             content-class="confirm-modal-content"
@@ -35,23 +34,18 @@
         >
             <div class="modal-inner">
                 <div class="modal-close">
-                    <base-close></base-close>
+                    <div class="modal-close__title">Приветствие</div>
+                    <base-close @click="emit('confirm')"></base-close>
                 </div>
-                <div class="modal-image">Картинка</div>
+                <div class="modal-image" :style="{backgroundImage: `url('${emoteUrl}')`}"></div>
                 <div class="modal-text">
                     Приветствую в данной игре! Начни вводить свой новый пароль в текстовое поле на главном экране!
                 </div>
                 <div class="modal-button">
-                    <base-button text="Начать"></base-button>
+                    <base-button text="Начать" @click="emit('confirm')"></base-button>
                 </div>
             </div>
         </VueFinalModal>
-    <!-- </div> -->
-    <!-- <div class="modal">
-        <div class="modal-wrapper">
-        </div>
-        
-    </div> -->
 </template>
 
 <style lang='scss'>
@@ -60,8 +54,7 @@
         justify-content: center;
         align-items: center;
     }
-    // .confirm-modal-content {
-    // }
+
   .modal {
     &-inner {
         max-width: 400px;
@@ -76,39 +69,29 @@
         gap: 10px;
         padding: 20px;
     }
+    &-text {
+        margin-top: 10px;
+    }
     &-image {
         flex-grow: 1;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 10px;
     }
-    &-close, &-button {
+    &-button {
         display: flex;
         justify-content: flex-end;
     }
+    &-close {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__title {
+            font-size: 15px;
+            font-weight: bolder;
+        }
+    }
   }
-    // .modal {
-    //     position: absolute;
-    //     width: 100vw;
-    //     height: 100vh;
-    //     top: 0;
-    //     left: 0;
-    //     right: 0;
-    //     bottom: 0;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     &-wrapper {
-    //         position: absolute;
-    //         width: 100%;
-    //         height: 100%;
-    //         background-color: #333;
-    //         opacity: .3;
-    //         top: 0;
-    //         left: 0;
-    //         right: 0;
-    //         bottom: 0;
-    //     }
-        
-    //     // &-button {
-    //     //     margin-top: 10px;
-    //     // }
-    // }
+
 </style>

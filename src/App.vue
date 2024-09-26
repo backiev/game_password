@@ -1,7 +1,28 @@
 <script setup lang="ts">
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-import Game from './components/Game.vue';
+  import Header from './components/Header.vue';
+  import Footer from './components/Footer.vue';
+  import Game from './components/Game.vue';
+  import { ModalsContainer, useModal } from 'vue-final-modal'
+  import ModalInfo from '@/components/ModalInfo.vue';
+  import { randomEmote } from './data/emotes/emotesHi';
+  import { IAttrsModal } from './types/modal';
+
+  const { open, close } = useModal({
+    component: ModalInfo,
+    attrs: {
+      title: 'Hello World!',
+      onConfirm() {
+        close()
+        localStorage.setItem('started_game', JSON.stringify(new Date().getTime()))
+      },
+      emoteUrl: randomEmote.url
+    } as IAttrsModal,
+  })
+  const started_game = JSON.parse(localStorage.getItem('started_game') as string);
+  
+  if (!started_game) {
+    open();
+  }
 
 </script>
 
@@ -13,6 +34,7 @@ import Game from './components/Game.vue';
     </main>
     <Footer />
   </div>
+  <ModalsContainer />
 </template>
 
 <style lang="scss" scoped>
