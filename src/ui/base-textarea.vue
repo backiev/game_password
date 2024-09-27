@@ -6,6 +6,7 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    class: String,
 })
 
 const emit = defineEmits(['update'])
@@ -20,6 +21,7 @@ const handleUpdate = (event: Event) => {
 <template>
     <textarea 
         class="textarea" 
+        :class="props.class"
         cols="30" 
         rows="3" 
         placeholder="Пароль"
