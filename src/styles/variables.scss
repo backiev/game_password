@@ -3,15 +3,23 @@ $color-blue-light: cornflowerblue;
 $color-dark-grey: darkgrey;
 $color-brown-light: rosybrown;
 $color-blue-active: deepskyblue;
-$color-warning: lightcyan;
+$color-warning: burlywood;
 $color-black: black;
 $color-white: white;
-$color-fail: #CD5C5C;
-$color-done: #71BE1E;
-$color-primary-hover: #0F79AF;
-$color-primary-active: #59C79F;
+$color-fail: #cd5c5c;
+$color-done: #71be1e;
+$color-primary-hover: #0f79af;
+$color-primary-active: #59c79f;
+$color-white-bg: mintcream;
+$color-black-bg: #333;
+$color-textarea-body: none;
+$color-button-hover: #c3b1e1;
+$color-button-active: #ccccff;
 
 // Screens
 $mobile: 500px;
 $tablet: 800px;
 $desktop: 1200px;
+
+// Time
+$transition-theme-time: 0.2s;

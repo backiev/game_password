@@ -1,0 +1,12 @@
+.main {
+    background-color: $color-black-bg;
+    color: $color-white;
+    transition: background-color $transition-theme-time ease-in-out, color $transition-theme-time ease-in-out;
+    &.white {
+        background-color: $color-white-bg;
+        color: $color-black;
+        .textarea {
+            border: 1px solid $color-black;
+        }
+    }
+}
