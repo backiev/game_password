@@ -3,13 +3,36 @@
     import Tasks from '../components/Tasks.vue'
     import baseButton from '@/ui/base-button.vue'
     import {usePasswordStore} from '@/store/password.store'
+    import {storeToRefs} from 'pinia'
+    import {computed} from 'vue'
+    import {useModal} from 'vue-final-modal'
+    import {randomEmote} from '@/data/emotes/emotesBye'
+    import ModalInfo from '@/components/ModalInfo.vue'
+    import {IAttrsModal} from '@/types/modal'
 
+    const {open, close} = useModal({
+        component: ModalInfo,
+        attrs: {
+            title: 'Завершение',
+            text: 'Поздравляю! Вы завершили игру',
+            textButton: 'Закрыть',
+            emoteUrl: randomEmote.url,
+            onConfirm() {
+                close()
+                localStorage.setItem('finished_game', JSON.stringify(new Date().getTime()))
+            },
+        } as IAttrsModal,
+    })
     const store = usePasswordStore()
+    const {finishedPassword} = storeToRefs(store)
     const updateHandle = (value: string) => {
         store.updatePassword(value)
     }
     const checkPasswordHandle = () => {
         store.checkTasks()
+        if (finishedPassword.value) {
+            open()
+        }
     }
 </script>
 

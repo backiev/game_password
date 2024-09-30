@@ -7,6 +7,8 @@
 
     const props = defineProps({
         title: String,
+        text: String,
+        textButton: String,
         emoteUrl: String,
         onConfirm: Function,
     })
@@ -24,15 +26,15 @@
         content-transition="vfm-fade">
         <div class="modal-inner">
             <div class="modal-close">
-                <div class="modal-close__title">Приветствие</div>
+                <div class="modal-close__title" v-if="title">{{ title }}</div>
                 <base-close @click="emit('confirm')"></base-close>
             </div>
-            <div class="modal-image" :style="{backgroundImage: `url('${emoteUrl}')`}"></div>
-            <div class="modal-text">
-                Приветствую в данной игре! Начни вводить свой новый пароль в текстовое поле на главном экране!
+            <div class="modal-image" v-if="emoteUrl" :style="{backgroundImage: `url('${emoteUrl}')`}"></div>
+            <div class="modal-text" v-if="text">
+                {{ text }}
             </div>
             <div class="modal-button">
-                <base-button text="Начать" @click="emit('confirm')"></base-button>
+                <base-button :text="textButton ? textButton : 'Закрыть'" @click="emit('confirm')"></base-button>
             </div>
         </div>
     </VueFinalModal>

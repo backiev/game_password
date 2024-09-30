@@ -11,12 +11,14 @@
     const {open, close} = useModal({
         component: ModalInfo,
         attrs: {
-            title: 'Hello World!',
+            title: 'Приветствие',
+            text: 'Приветствую в данной игре! Начни вводить свой новый пароль в текстовое поле на главном экране!',
+            textButton: 'Начать',
+            emoteUrl: randomEmote.url,
             onConfirm() {
                 close()
                 localStorage.setItem('started_game', JSON.stringify(new Date().getTime()))
             },
-            emoteUrl: randomEmote.url,
         } as IAttrsModal,
     })
     const started_game = JSON.parse(localStorage.getItem('started_game') as string)

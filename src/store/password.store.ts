@@ -15,6 +15,12 @@ export const usePasswordStore = defineStore({
             ? JSON.parse(localStorage.getItem('tasks') as string)
             : [tasks[0]],
     }),
+    getters: {
+        finishedPassword: (state) => {
+            // const doneTasks = this.tasks.filter((task) => task.status === 'done')
+            return state.tasks.filter((task) => task.status !== 'done').length === 0 ? true : false
+        },
+    },
     actions: {
         // Проверяем, добавлять нам новую таску или нет
         checkNewTask() {
