@@ -1,6 +1,7 @@
 import {defineStore} from 'pinia'
 import {tasks} from '@/data/tasks/tasks'
 import {ITask} from '@/types/tasks'
+import useEventsBus from '@/eventBus'
 
 interface PasswordState {
     password: string
@@ -41,13 +42,22 @@ export const usePasswordStore = defineStore({
         },
         // Проверяем статусы у активных тасков
         checkTasks() {
+            let flagDoneTasks = false
             this.tasks.map((task) => {
                 tasks.map((item) => {
                     if (task.id === item.id) {
+                        if (item.checkSuccess(this.password) === 'done' && task.status !== 'done') {
+                            flagDoneTasks = true
+                        }
                         task.status = item.checkSuccess(this.password)
                     }
                 })
             })
+            if (flagDoneTasks) {
+                const {emit} = useEventsBus()
+                emit('doneTask', flagDoneTasks)
+            }
+
             if (this.tasks.length > 1) {
                 this.sortTasks()
             }

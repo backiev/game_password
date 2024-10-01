@@ -7,6 +7,9 @@
     import {randomEmote} from './data/emotes/emotesHi'
     import {IAttrsModal} from './types/modal'
     import {useThemeStore} from '@/store/theme.store'
+    import useEventsBus from '@/eventBus'
+    import {nextTick, ref, watch} from 'vue'
+    import ConfettiExplosion from 'vue-confetti-explosion'
 
     const {open, close} = useModal({
         component: ModalInfo,
@@ -23,18 +26,40 @@
     })
     const started_game = JSON.parse(localStorage.getItem('started_game') as string)
     const themeStore = useThemeStore()
-    // console.log(theme)
+    const {bus} = useEventsBus()
+    const visible = ref(false)
+
+    const explode = async () => {
+        visible.value = false
+        await nextTick()
+        visible.value = true
+    }
 
     if (!started_game) {
         open()
     }
+
+    watch(
+        () => bus.value.get('doneTask'),
+        (val) => {
+            const [doneTask] = val ?? []
+            explode()
+        },
+    )
 </script>
 
 <template>
     <div class="wrapper">
         <Header />
+
         <main class="main" :class="{white: themeStore.theme}">
             <Game />
+            <div class="main-confetti-left">
+                <ConfettiExplosion v-if="visible" :particleCount="150" />
+            </div>
+            <div class="main-confetti-right">
+                <ConfettiExplosion v-if="visible" :particleCount="150" />
+            </div>
         </main>
         <Footer />
     </div>
@@ -44,5 +69,18 @@
 <style lang="scss">
     .main {
         flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+        &-confetti-left,
+        &-confetti-right {
+            position: absolute;
+            top: 0;
+        }
+        &-confetti-left {
+            left: 0;
+        }
+        &-confetti-right {
+            right: 0;
+        }
     }
 </style>
