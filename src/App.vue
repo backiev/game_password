@@ -20,7 +20,7 @@
             emoteUrl: randomEmote.url,
             onConfirm() {
                 close()
-                localStorage.setItem('started_game', JSON.stringify(new Date().getTime()))
+                localStorage.setItem('started_game', JSON.stringify(Date.now()))
             },
         } as IAttrsModal,
     })
@@ -42,7 +42,7 @@
     watch(
         () => bus.value.get('doneTask'),
         (val) => {
-            const [doneTask] = val ?? []
+            // const [doneTask] = val ?? []
             explode()
         },
     )

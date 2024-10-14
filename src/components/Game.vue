@@ -10,20 +10,24 @@
     import ModalInfo from '@/components/ModalInfo.vue'
     import {IAttrsModal} from '@/types/modal'
 
+    const store = usePasswordStore()
     const {open, close} = useModal({
         component: ModalInfo,
         attrs: {
             title: 'Завершение',
-            text: 'Поздравляю! Вы завершили игру',
+            text: `Поздравляю! Вы завершили игру! Ваше итоговое время: ${new Date(
+                Date.now() - parseInt(JSON.parse(localStorage.getItem('started_game') as string)) > 0
+                    ? Date.now() - parseInt(JSON.parse(localStorage.getItem('started_game') as string))
+                    : 0,
+            ).getMinutes()} минут. Ваш финальный пароль: ${store.password}`,
             textButton: 'Закрыть',
             emoteUrl: randomEmote.url,
             onConfirm() {
                 close()
-                localStorage.setItem('finished_game', JSON.stringify(new Date().getTime()))
+                localStorage.setItem('finished_game', JSON.stringify(Date.now()))
             },
         } as IAttrsModal,
     })
-    const store = usePasswordStore()
     const {finishedPassword} = storeToRefs(store)
     const updateHandle = (value: string) => {
         store.updatePassword(value)

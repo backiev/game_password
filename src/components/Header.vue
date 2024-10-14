@@ -11,7 +11,7 @@
 <template>
     <div class="header">
         <div class="header-wrapper">
-            <div class="header-logo">GamePassword</div>
+            <div class="header-logo">Неопознанный пароль</div>
             <div class="header-theme-wrapper">
                 <div class="header-theme" :class="{white: themeStore.theme}" @click="handleClickTheme"></div>
             </div>
