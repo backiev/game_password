@@ -17,6 +17,9 @@ export const usePasswordStore = defineStore({
             : [tasks[0]],
     }),
     getters: {
+        progressTasks: (state) => {
+            return state.tasks.length / tasks.length
+        },
         finishedPassword: (state) => {
             // const doneTasks = this.tasks.filter((task) => task.status === 'done')
             return state.tasks.filter((task) => task.status !== 'done').length === 0 ? true : false
@@ -65,7 +68,7 @@ export const usePasswordStore = defineStore({
             if (this.tasks.length !== tasks.length) {
                 this.checkNewTask()
             } else {
-                console.log('all succedd')
+                console.log('all tasks added')
             }
 
             localStorage.setItem('tasks', JSON.stringify(this.tasks))

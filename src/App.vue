@@ -55,10 +55,10 @@
         <main class="main" :class="{white: themeStore.theme}">
             <Game />
             <div class="main-confetti-left">
-                <ConfettiExplosion v-if="visible" :particleCount="150" />
+                <ConfettiExplosion v-if="visible" :particleCount="100" />
             </div>
             <div class="main-confetti-right">
-                <ConfettiExplosion v-if="visible" :particleCount="150" />
+                <ConfettiExplosion v-if="visible" :particleCount="100" />
             </div>
         </main>
         <Footer />
