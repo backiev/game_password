@@ -83,5 +83,13 @@ export const usePasswordStore = defineStore({
             this.password = value
             localStorage.setItem('password', JSON.stringify(this.password))
         },
+        newGame() {
+            this.password = ''
+            this.tasks = [tasks[0]]
+            localStorage.setItem('password', JSON.stringify(this.password))
+            localStorage.setItem('tasks', JSON.stringify(this.tasks))
+            localStorage.setItem('started_game', JSON.stringify(Date.now()))
+            localStorage.removeItem('finished_game')
+        },
     },
 })

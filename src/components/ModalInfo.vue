@@ -34,7 +34,7 @@
                 {{ text }}
             </div>
             <div class="modal-button">
-                <base-button :text="textButton ? textButton : 'Закрыть'" @click="emit('confirm')"></base-button>
+                <base-button @click="emit('confirm')">{{ textButton }}</base-button>
             </div>
         </div>
     </VueFinalModal>

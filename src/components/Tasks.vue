@@ -2,9 +2,10 @@
     import task from '@/ui/task.vue'
     import {usePasswordStore} from '@/store/password.store'
     import {tasks as tasks_array} from '@/data/tasks/tasks'
+    import {storeToRefs} from 'pinia'
 
     const store = usePasswordStore()
-    const tasks = store.tasks
+    const {tasks} = storeToRefs(store)
 </script>
 
 <template>

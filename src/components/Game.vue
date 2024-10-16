@@ -38,6 +38,9 @@
             open()
         }
     }
+    const handleRestartGame = () => {
+        store.newGame()
+    }
 </script>
 
 <template>
@@ -50,13 +53,16 @@
                             v-model="store.password"
                             @update="updateHandle"
                             class="block-textarea"></base-textarea>
-                        <base-button
-                            class="block-button"
-                            text="Проверить"
-                            @clickHandle="checkPasswordHandle"></base-button>
+                        <base-button class="block-button" @clickHandle="checkPasswordHandle">Проверить</base-button>
                         <!-- <button class="button block-button" @click="checkPasswordHandle">Проверить</button> -->
                     </div>
                 </div>
+                <base-button
+                    @clickHandle="handleRestartGame"
+                    class="block-button button-restart"
+                    v-if="finishedPassword"
+                    >Сыграть заново</base-button
+                >
                 <tasks></tasks>
             </div>
         </div>
@@ -77,6 +83,10 @@
                 padding: 10px 0;
             }
         }
+    }
+    .button-restart {
+        margin-top: 10px;
+        width: 100%;
     }
 
     .game {

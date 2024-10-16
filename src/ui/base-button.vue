@@ -8,7 +8,9 @@
 </script>
 
 <template>
-    <button class="button" @click="emit('clickHandle')">{{ text ? text : 'Закрыть' }}</button>
+    <button :class="class" class="button" @click="emit('clickHandle')">
+        <slot> Закрыть </slot>
+    </button>
 </template>
 
 <style lang="scss" scoped>
