@@ -43,7 +43,7 @@
 
     watch(
         () => bus.value.get('doneTask'),
-        (val) => {
+        () => {
             // const [doneTask] = val ?? []
             explode()
         },

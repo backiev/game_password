@@ -4,7 +4,6 @@
     import baseButton from '@/ui/base-button.vue'
     import {usePasswordStore} from '@/store/password.store'
     import {storeToRefs} from 'pinia'
-    import {computed} from 'vue'
     import {useModal} from 'vue-final-modal'
     import {randomEmote} from '@/data/emotes/emotesBye'
     import ModalInfo from '@/components/ModalInfo.vue'
