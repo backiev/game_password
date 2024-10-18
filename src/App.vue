@@ -20,6 +20,8 @@
             emoteUrl: randomEmote.url,
             onConfirm() {
                 close()
+            },
+            onClosed() {
                 localStorage.setItem('started_game', JSON.stringify(Date.now()))
             },
         } as IAttrsModal,

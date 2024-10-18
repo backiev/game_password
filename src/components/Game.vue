@@ -24,6 +24,8 @@
             emoteUrl: randomEmote.url,
             onConfirm() {
                 close()
+            },
+            onClosed() {
                 localStorage.setItem('finished_game', JSON.stringify(Date.now()))
             },
         } as IAttrsModal,

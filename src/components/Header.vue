@@ -5,9 +5,9 @@
 
     const themeStore = useThemeStore()
     const store = usePasswordStore()
-    const tasks = store.tasks
+    // const tasks = store.tasks
     const progressTasks = computed(() => store.progressTasks)
-    console.log(progressTasks)
+    // console.log(progressTasks)
 
     const handleClickTheme = () => {
         themeStore.changeTheme()
