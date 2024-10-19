@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    import baseTextarea from '../ui/base-textarea.vue'
-    import Tasks from '../components/Tasks.vue'
+    import baseTextarea from '@/ui/base-textarea.vue'
+    import Tasks from '@/components/Tasks.vue'
     import baseButton from '@/ui/base-button.vue'
     import {usePasswordStore} from '@/store/password.store'
     import {storeToRefs} from 'pinia'

@@ -6,6 +6,7 @@
 
     const store = usePasswordStore()
     const {tasks} = storeToRefs(store)
+    console.log('Tasks', tasks)
 </script>
 
 <template>
