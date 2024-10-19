@@ -12,7 +12,7 @@
         emoteUrl: String,
         onConfirm: Function,
     })
-    console.log(props.title)
+    // console.log(props.title)
 
     const emit = defineEmits<{
         (e: 'confirm'): void

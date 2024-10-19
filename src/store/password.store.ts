@@ -68,7 +68,7 @@ export const usePasswordStore = defineStore({
             if (this.tasks.length !== tasks.length) {
                 this.checkNewTask()
             } else {
-                console.log('all tasks added')
+                // console.log('all tasks added')
             }
 
             localStorage.setItem('tasks', JSON.stringify(this.tasks))

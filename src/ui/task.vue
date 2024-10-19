@@ -3,7 +3,6 @@
         text: String,
         status: String || null,
     })
-    // done, fail, active, null
 </script>
 
 <template>

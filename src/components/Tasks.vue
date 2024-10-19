@@ -6,7 +6,6 @@
 
     const store = usePasswordStore()
     const {tasks} = storeToRefs(store)
-    console.log('Tasks', tasks)
 </script>
 
 <template>
@@ -16,7 +15,12 @@
         </div>
         <div class="game-tasks">
             <TransitionGroup name="tasks">
-                <task v-for="task in tasks" :key="task.id" :text="task.text" :status="task.status"> </task>
+                <task
+                    v-for="element in tasks"
+                    :key="element.id"
+                    :text="element.text"
+                    :status="element.status ? element.status : ''">
+                </task>
             </TransitionGroup>
         </div>
     </div>

@@ -3,7 +3,7 @@
         text: String,
         class: String,
     })
-    console.log(props.text)
+    // console.log(props.text)
 
     const emit = defineEmits(['clickHandle'])
 </script>
